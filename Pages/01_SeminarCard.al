@@ -6,9 +6,10 @@ page 123456701 "CSD Seminar Card"
 
     layout
     {
-            area(FactBoxes)
+    area(FactBoxes)
     {
-        
+        systempart("Links";Links) { } 
+        systempart("Notes";Notes) { }        
     }
 
         area(content)
@@ -17,7 +18,14 @@ page 123456701 "CSD Seminar Card"
             {
                 Caption = 'General';
                 field("No.";"No.")
-                {                }
+                { 
+                    AssistEdit = true;
+                    trigger OnAssistEdit();
+                    begin
+                        if AssistEdit then
+                            CurrPage.Update;
+                    end;
+                }
                 field(Name;Name)
                 {                }
                 field("Search Name";"Search Name")
@@ -56,8 +64,22 @@ page 123456701 "CSD Seminar Card"
                 end;
             }
         }
+        area(Navigation)
+        {
+            group("&Seminar")
+            {
+                action("Co&mments") 
+                { 
+                    //RunObject=page "Seminar Comment Sheet"; //RunPageLink = "Table Name"= const(Seminar), // "No."=field("No."); 
+                    Image = Comment; 
+                    Promoted = true; 
+                    PromotedIsBig = true; 
+                    PromotedOnly = true; 
+                }
+            }
+        }
     }
     
     var
-        myInt : Integer;
+        assistedit: Boolean;
 }
