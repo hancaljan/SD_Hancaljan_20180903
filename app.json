@@ -1,0 +1,26 @@
+{
+  "id": "9411dfed-3fde-4252-a3d5-fb8e09531322",
+  "name": "SD Hancaljan",
+  "publisher": "Jannik Hansson/Naviators",
+  "brief": "Best ever",
+  "description": "The best ever solution made ...",
+  "version": "1.0.0.0",
+  "compatibilityId": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
+  "features": "TranslationFile",
+  "showMyCode": true,
+  "target": "Internal",
+  "idRange": {
+    "from": 123456700,
+    "to": 123456799
+  }
+}
