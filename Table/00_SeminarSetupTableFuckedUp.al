@@ -36,4 +36,3 @@ table 123456700 "CSD Seminar Setup"
         }
     }
 }
-

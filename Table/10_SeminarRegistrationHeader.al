@@ -12,6 +12,12 @@ table 123456710 "CSD Seminar Reg. Header"
 
             trigger OnValidate();
             begin
+                if "No." <> xRec."No." then begin 
+                    SeminarSetup.GET; 
+                    NoSeriesMgt.TestManual(SeminarSetup. "Seminar Registration Nos.");
+                end;
+                if "Starting Date" <> xRec."Starting Date" then 
+                    TestField(Status, Status::Planning);
                 if "No." <> xRec."No." then begin
                   SeminarSetup.Get;
                   NoSeriesMgt.TestManual(SeminarSetup."Seminar Registration Nos.");
@@ -282,14 +288,16 @@ table 123456710 "CSD Seminar Reg. Header"
         SeminarRoom : Record Resource;
         SeminarSetup : Record "csd Seminar Setup";
         NoSeriesMgt : Codeunit NoSeriesManagement;
-        Text001 : TextConst ENU = 'You cannot delete the Seminar Registration, because there is at least one %1 where %2=%3.';
-        Text002 : TextConst ENU = 'You cannot change the %1, because there is at least one %2 with %3=%4.';
+        Text001 : Label 'You cannot delete the Seminar Registration, because there is at least one %1 where %2=%3.';
+        Text002 : label 'You cannot change the %1, because there is at least one %2 with %3=%4.';
         Text004 : Label 'This Seminar is for %1 participants. \The selected Room has a maximum of %2 participants \Do you want to change %3 for the Seminar from %4 to %5?';
         Text005 : Label 'Should the new %1 be copied to all %2 that are not yet invoiced?';
         Text006 : Label 'You cannot delete the Seminar Registration, because there is at least one %1.';
 
     trigger OnDelete();
     begin
+        if (CurrFieldNo>0) then 
+            TestField(Status,Status::Canceled);
         SeminarRegLine.RESET;
         SeminarRegLine.SETRANGE("Document No.","No.");
         SeminarRegLine.SETRANGE(Registered,true);
@@ -321,11 +329,7 @@ table 123456710 "CSD Seminar Reg. Header"
           NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos.",xRec."No. Series",0D,"No.","No. Series");
         end;
 
-        if "Posting Date" = 0D then
-          "Posting Date" := WORKDATE;
-        "Document Date" := WORKDATE;
-        SeminarSetup.GET;
-        NoSeriesMgt.SetDefaultSeries("Posting No. Series",SeminarSetup."Posted Seminar Reg. Nos.");
+        initrecord;
     end;
 
     procedure AssistEdit(OldSeminarRegHeader : Record "CSD Seminar Reg. Header") : Boolean;
@@ -343,5 +347,27 @@ table 123456710 "CSD Seminar Reg. Header"
           end;
         end;
     end;
+    local procedure initrecord();
+    begin
+        if "Posting Date" = 0D then
+          "Posting Date" := WORKDATE;
+        "Document Date" := WORKDATE;
+        SeminarSetup.GET;
+        NoSeriesMgt.SetDefaultSeries("Posting No. Series",SeminarSetup."Posted Seminar Reg. Nos.");        
+    end;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
