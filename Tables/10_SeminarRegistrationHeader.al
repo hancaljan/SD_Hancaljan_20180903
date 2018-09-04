@@ -64,8 +64,8 @@ table 123456710 "CSD Seminar Reg. Header"
                     "Seminar Price" := Seminar."Seminar Price";
                     "Gen. Prod. Posting Group" := Seminar."Gen. Prod. Posting Group";
                     "VAT Prod. Posting Group" := Seminar."VAT Prod. Posting Group";
-                    "Minimum Participants" := Seminar."Minimum Participants";
-                    "Maximum Participants" := Seminar."Maximum Participants";
+                    "Minimum Participants" := Seminar."Min. Participant";
+                    "Maximum Participants" := Seminar."Max. Participant";
                 end;
             end;
         }
@@ -233,7 +233,7 @@ table 123456710 "CSD Seminar Reg. Header"
         Field(22; Comment; Boolean)
         {
             Caption = 'Comment';
-            CalcFormula = Exist ("CSD Seminar Comment Line" where ("Table Name" = const("Seminar Registration"),
+            CalcFormula = Exist ("CSD Seminar Comment Line" where ("Table Name" = const("Seminar Registration Header"),
                                                               "No." = Field ("No.")));
             Editable = false;
             FieldClass = FlowField;
@@ -349,7 +349,7 @@ table 123456710 "CSD Seminar Reg. Header"
             ERROR(Text006, SeminarCharge.TableCaption);
 
         SeminarCommentLine.Reset;
-        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration");
+        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration Header");
         SeminarCommentLine.SetRange("No.", "No.");
         SeminarCommentLine.deleteALL;
     end;

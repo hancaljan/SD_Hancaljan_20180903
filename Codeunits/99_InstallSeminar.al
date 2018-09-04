@@ -75,8 +75,8 @@ codeunit 123456799 InstallSeminar
         Seminar."No.":='SOLDEV';
         Seminar.Validate(Name,'Solution Development');
         Seminar.Validate("Gen. Prod. Posting Group",'MISC');
-        Seminar."Max. Participant":=12;
-        Seminar."Min. Participant":=4;
+        Seminar."Maximum Participants":=12;
+        Seminar."Minimum Participants":=4;
         Seminar."Seminar Duration":=5;
         Seminar."Seminar Price":=1000;
         if Seminar.insert then;
