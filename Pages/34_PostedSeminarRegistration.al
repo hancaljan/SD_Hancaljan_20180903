@@ -7,8 +7,9 @@ page 123456734  "CSD Posted Seminar Reg."
     Caption = 'Posted Seminar Registration';
     Editable = false;
     PageType = Document;
-    SourceTable = "CSD Posted Seminar Reg. Header";
-
+    SourceTable = "CSD Posted Seminar Reg. Header";  
+    LookupPageId="Posted Seminar Reg. List"; 
+    DrillDownPageId="Posted Seminar Reg. List";
     layout
     {
         
