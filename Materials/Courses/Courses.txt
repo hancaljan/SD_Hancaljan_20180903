@@ -1,0 +1,7 @@
+80040;Installation & Configuration;Basic Knowledge on Installation & Configuration;Remote Training;2;1.000;No;5;75
+80041;Finance;Basic Knowledge on Finance;Instructor Led;3;1.500;No;7;80
+80042;C/Side Introduction;Introduction to Programming;Instructor Led;5;2.500;No;8;80
+80043;Introduction;Introduction to Microsoft Dynamics NAV;Remote Training;2;1.000;No;4;60
+80049;Application Setup;Basic Knowledge on Application Setup;e-Learning;2;1.000;No;5;65
+80050;Business Intelligence;Basic Knowledge on Business Intelligence;e-Learning;1;500;No;5;65
+80055;C/Side Solution Development;Advanced in Programming;Instructor Led;5;2.500;No;10;75
