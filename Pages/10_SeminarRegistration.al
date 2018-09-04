@@ -34,7 +34,7 @@ page 123456710 "CSD Seminar Registration"
                 field("Seminar Name"; "Seminar Name")
                 {
                 }
-                field("Instructor Resource No."; "Instructor Code")
+                field("Instructor Resource No."; "Instructor Resource No.")
                 {
                 }
                 field("Instructor Name"; "Instructor Name")
@@ -59,14 +59,14 @@ page 123456710 "CSD Seminar Registration"
                 {
                 }
             }
-            part(SeminarRegistrationLines;"CSD Post Seminar Reg. Subpage")
+            part(SeminarRegistrationLines; "Seminar Reg. Subpage")
             {
                 Caption = 'Lines';
                 SubPageLink = "Document No." = field ("No.");
             }
             group("Seminar Room")
             {
-                field("Room Resource No."; "Room Code")
+                field("Room Resource No."; "Room Resource No.")
                 {
                 }
                 field("Room Name"; "Room Name")
@@ -138,7 +138,7 @@ page 123456710 "CSD Seminar Registration"
                     Image = Comment;
                     RunObject = Page 123456706;
                     RunPageLink = "No." = Field ("No.");
-                    RunPageView = where ("Table Name" = const("Seminar Registration Header"));
+                    RunPageView = where ("Table Name" = const("Seminar Registration"));
                 }
                 action("&Charges")
                 {
@@ -161,6 +161,20 @@ page 123456710 "CSD Seminar Registration"
                 ShortcutKey = F9;
                 RunObject = codeunit "CSD Seminar-Post (Yes/No)";
             }
+            action("&Print")
+            {
+                Caption = '&Print';
+                Image = Print;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                trigger OnAction();
+                var
+                    SeminarReportSelection : Record "CSD Seminar Report Selections";
+                begin
+                    SeminarReportSelection.PrintReportSelection(SeminarReportSelection.Usage::Registration,Rec);
+                end;
+            }            
         }
     }
 }
