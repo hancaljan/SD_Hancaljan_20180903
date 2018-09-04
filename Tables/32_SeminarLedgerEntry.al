@@ -160,7 +160,7 @@ table 123456732 "CSD Seminar Ledger Entry"
         }
         key(Key2;"Document No.","Posting Date")
         {
-            
+                
         }
     }
 
